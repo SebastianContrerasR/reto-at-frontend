@@ -15,7 +15,8 @@ export const createTicket = async (ticketData: CreateTicket, token: string | nul
     });
 
     if (!response.ok) {
-        throw new Error('Failed to create ticket');
+        const responseData = await response.json();
+        throw new Error(responseData.message);
     }
 };
 

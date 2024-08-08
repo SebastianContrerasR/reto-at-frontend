@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { getFlights } from '@/services/flight.service';
-import Loading from './Loading';
 import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import Loading from './Loading';
 
 interface Flight {
     id: string;
@@ -15,7 +14,6 @@ interface Flight {
 const FlightList: React.FC = () => {
     const [flights, setFlights] = useState<Flight[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const router = useRouter();
 
     useEffect(() => {
         fetchFlights();

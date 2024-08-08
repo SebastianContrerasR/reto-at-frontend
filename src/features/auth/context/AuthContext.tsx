@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 import { login } from '../services/auth.service';
 import { AuthUser, LoginRequest, LoginResponse } from '../types/auth.types';
 import { useRouter } from 'next/router';
+import { toast } from 'sonner';
 
 interface AuthContextType {
     user: AuthUser | null;
@@ -39,6 +40,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             localStorage.setItem('token', data.accessToken);
 
             router.push('/');
+            toast.success('Logged in successfully');
         } catch (error) {
             setError('Error en la autenticación');
         }
@@ -49,6 +51,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         localStorage.removeItem('token');
         setUser(null);
         setToken(null);
+        toast.success('Logged out successfully');
     };
 
 

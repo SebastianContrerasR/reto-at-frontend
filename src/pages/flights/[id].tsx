@@ -11,6 +11,7 @@ import { FlightDetails, Seat } from '@/types/flight-details';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 
 const FlightPage = () => {
     const router = useRouter();
@@ -50,6 +51,12 @@ const FlightPage = () => {
     const handlePayment = async () => {
         if (!flight || isPayment) return;
 
+        if (!token) {
+            toast.info('You must be logged in to pay');
+            router.push('/auth/login');
+            return;
+        }
+
         const ticketItems: CreateTicketItem[] = selectedSeats.map((seat) => ({
             seatCode: seat.code,
             price: seat.price,
@@ -64,13 +71,12 @@ const FlightPage = () => {
         setIsPayment(true);
         try {
             await createTicket(ticketData, token);
-            alert('Ticket successfully created!');
+            toast.success('Ticket successfully created!');
 
             await fetchFlightById(id as string);
             setSelectedSeats([]);
-        } catch (error) {
-            console.error('Error creating ticket:', error);
-            alert('Failed to create ticket');
+        } catch (error: any) {
+            toast.error(error?.message || 'Failed to create ticket');
         } finally {
             setIsPayment(false);
         }
