@@ -49,6 +49,10 @@ Para ejecutar el proyecto, sigue estos pasos:
    npm run start
    ```
 #### **Capturas**
+- Pagina principal (Lista de vuelos)
+
+![image](https://github.com/user-attachments/assets/bd37375c-e1c6-463c-8945-b9d527106756)
+
 - Detalle de vuelo y seleccion de asientos para pagar
   
 ![image](https://github.com/user-attachments/assets/8a0c1738-86c7-43b3-8915-21c031dceabe)
