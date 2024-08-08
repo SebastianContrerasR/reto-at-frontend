@@ -50,13 +50,19 @@ Para ejecutar el proyecto, sigue estos pasos:
    ```
 #### **Capturas**
 - Detalle de vuelo y seleccion de asientos para pagar
+  
 ![image](https://github.com/user-attachments/assets/8a0c1738-86c7-43b3-8915-21c031dceabe)
+
 - Lista de tickets del usuario
+  
 ![image](https://github.com/user-attachments/assets/fb3a6de5-0c8b-47ae-aedd-691b95962adb)
 
 - Registro
+
 ![image](https://github.com/user-attachments/assets/5c356db5-3d04-4699-81fd-9600544bfff4)
+
 - Login
+
 ![image](https://github.com/user-attachments/assets/9cce4273-105e-4b10-9a68-9fc009ef8efd)
 
 #### **Importante**
