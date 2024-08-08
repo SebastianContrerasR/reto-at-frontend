@@ -39,9 +39,16 @@ const Navbar = () => {
                         )}
                     </div>
                 ) : (
-                    <Link href="/auth/login">
-                        <span className="text-blue-300 hover:underline">Login</span>
-                    </Link>
+                    <div>
+
+                        <Link href="/auth/login">
+                            <span className=" hover:underline">Login</span>
+                        </Link>
+                        <span className="mx-2">or</span>
+                        <Link href="/auth/register">
+                            <span className=" hover:underline">Register</span>
+                        </Link>
+                    </div>
                 )}
             </div>
         </nav>

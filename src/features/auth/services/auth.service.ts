@@ -1,5 +1,5 @@
 import { API_URL } from "@/features/common/constants/constants";
-import { LoginRequest, LoginResponse } from "../types/auth.types";
+import { LoginRequest, LoginResponse, RegisterRequest } from "../types/auth.types";
 
 export const login = async (credentials: LoginRequest): Promise<LoginResponse> => {
     const response = await fetch(`${API_URL}/auth/login`, {
@@ -15,4 +15,19 @@ export const login = async (credentials: LoginRequest): Promise<LoginResponse> =
     }
 
     return response.json();
+};
+
+export const register = async (credentials: RegisterRequest): Promise<void> => {
+    const response = await fetch(`${API_URL}/auth/register`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+    });
+
+    if (!response.ok) {
+        const responseData = await response.json();
+        throw new Error(responseData?.message || 'Failed to register');
+    }
 };
