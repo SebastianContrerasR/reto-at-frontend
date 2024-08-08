@@ -1,40 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Reto frontend
+#### Arquitectura Basada en Características
 
-## Getting Started
+Para el proyecto se usa una arquitectura basada en caracteristicas. Esta estructura se refleja en el proyecto, donde cada característica (como autenticación, vuelos y tickets) tiene su propia carpeta que agrupa componentes, servicios, contextos y tipos relacionados.
 
-First, run the development server:
+**Ventajas de la Arquitectura Basada en Características:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Cohesión**
+2. **Escalabilidad**
+3. **Mantenimiento**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Relación con los Principios SOLID:**
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **Single Responsibility Principle (SRP)**: Cada carpeta o módulo tiene una única responsabilidad y está diseñado para manejar una parte específica del proyecto, como autenticación o gestión de vuelos.
+- **Open/Closed Principle (OCP)**: La arquitectura permite extender funcionalidades sin modificar el código existente. Por ejemplo, puedes agregar nuevos componentes o servicios dentro de una característica sin afectar a otras.
+- **Interface Segregation Principle (ISP)**: Cada módulo tiene interfaces específicas que se ajustan a sus necesidades, evitando interfaces grandes y complejas.
+- **Dependency Inversion Principle (DIP)**: La arquitectura facilita la inyección de dependencias y el desacoplamiento entre componentes y servicios, promoviendo una mejor modularidad.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+#### Tecnologías Usadas
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **Next.js**
+- **Tailwind CSS**
+- **TypeScript**
+- **jsPDF**
+- **Sonner**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Ejecución del Proyecto
 
-## Learn More
+Para ejecutar el proyecto, sigue estos pasos:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Instalar Dependencias**: Asegúrate de tener todas las dependencias instaladas ejecutando:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Ejecutar el Servidor de Desarrollo**: Inicia el servidor de desarrollo con:
+   ```bash
+   npm run dev
+   ```
+   Esto ejecutará Next.js en el puerto 4000 por defecto (`http://localhost:4000`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. **Construir el Proyecto para Producción**: Si deseas construir el proyecto para producción, usa:
+   ```bash
+   npm run build
+   ```
 
-## Deploy on Vercel
+4. **Iniciar el Servidor de Producción**: Una vez construido, puedes iniciar el servidor de producción con:
+   ```bash
+   npm run start
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### **Importante**
+Se debe tener corriendo el backend para que funcione este proyecto. Link del backend: [Texto del Enlace](http://ejemplo.com)
