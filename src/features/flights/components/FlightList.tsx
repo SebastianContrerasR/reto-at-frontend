@@ -1,7 +1,7 @@
-import { getFlights } from '@/services/flight.service';
+import Loading from '@/features/common/components/Loading';
+import { getFlights } from '@/features/flights/services/flight.service';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import Loading from './Loading';
 
 interface Flight {
     id: string;

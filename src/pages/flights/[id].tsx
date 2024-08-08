@@ -1,13 +1,12 @@
-import { FlightSeats } from '@/components/FlightSeats';
-import Loading from '@/components/Loading';
-import { SelectedSeatsBar } from '@/components/SelectedSeatsBar';
+import { FlightSeats } from '@/features/flights/components/FlightSeats';
+import Loading from '@/features/common/components/Loading';
+import { SelectedSeatsBar } from '@/features/flights/components/SelectedSeatsBar';
 import { useAuth } from '@/features/auth/context/AuthContext';
 import MainLayout from '@/features/common/layouts/MainLayout';
-import { USER_ID } from '@/services/constant';
-import { getFlightDetails } from '@/services/flight.service';
-import { createTicket } from '@/services/ticketService';
-import { CreateTicket, CreateTicketItem } from '@/types/create-ticket';
-import { FlightDetails, Seat } from '@/types/flight-details';
+import { getFlightDetails } from '@/features/flights/services/flight.service';
+import { createTicket } from '@/features/tickets/services/ticket.service';
+import { CreateTicket, CreateTicketItem } from '@/features/tickets/types/create-ticket';
+import { FlightDetails, Seat } from '@/features/flights/types/flight-details';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -63,7 +62,6 @@ const FlightPage = () => {
         }));
 
         const ticketData: CreateTicket = {
-            userId: USER_ID,
             flightId: flight.id,
             ticketItems,
         };

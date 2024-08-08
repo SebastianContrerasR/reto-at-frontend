@@ -1,4 +1,4 @@
-import { Seat } from "@/types/flight-details";
+import { Seat } from "@/features/flights/types/flight-details";
 
 interface SelectedSeatsBarProps {
     selectedSeats: Seat[];

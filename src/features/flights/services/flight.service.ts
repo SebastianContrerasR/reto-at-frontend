@@ -1,5 +1,5 @@
 import { API_URL } from "@/features/common/constants/constants";
-import { FlightDetails } from "@/types/flight-details";
+import { FlightDetails } from "@/features/flights/types/flight-details";
 
 export const getFlightDetails = async (id: string): Promise<FlightDetails> => {
     const res = await fetch(`${API_URL}/flights/${id}/details`);

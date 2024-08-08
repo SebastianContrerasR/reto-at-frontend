@@ -1,9 +1,9 @@
-import { generateTicketPdf } from '@/services/generateTicketPdf';
-import { getTickets } from '@/services/ticketService';
-import { Ticket } from '@/types/ticket';
+import { generateTicketPdf } from '@/features/tickets/services/generateTicketPdf';
+import { getTickets } from '@/features/tickets/services/ticket.service';
 import React, { useCallback, useEffect, useState } from 'react';
-import Loading from './Loading';
 import { useAuth } from '@/features/auth/context/AuthContext';
+import Loading from '@/features/common/components/Loading';
+import { Ticket, TicketStatus } from '../types/ticket';
 
 const TicketList: React.FC = () => {
     const [tickets, setTickets] = useState<Ticket[]>([]);
@@ -21,9 +21,9 @@ const TicketList: React.FC = () => {
         }
     }, [token]);
 
-    const handlePrintTicket = async (ticket: Ticket) => {
+    const handlePrintTicket = (ticket: Ticket) => {
         try {
-            await generateTicketPdf(ticket);
+            generateTicketPdf(ticket);
         } catch (error) {
             console.error(error);
         }
@@ -43,7 +43,7 @@ const TicketList: React.FC = () => {
             {tickets.length === 0 ? (
                 <p>No tickets found.</p>
             ) : (
-                tickets.map((ticket) => {
+                tickets.map((ticket: Ticket) => {
                     const totalPrice = ticket.ticketItems.reduce((total, item) => total + parseFloat(item.price), 0);
 
                     return (
@@ -66,12 +66,17 @@ const TicketList: React.FC = () => {
                                 ))}
                             </ul>
                             <p className="mt-2"><strong>Total Price:</strong> ${totalPrice.toFixed(2)}</p>
-                            <button
-                                onClick={() => handlePrintTicket(ticket)}
-                                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                            >
-                                Print Ticket
-                            </button>
+                            {
+                                ticket.status === TicketStatus.CONFIRMED && (
+
+                                    <button
+                                        onClick={() => handlePrintTicket(ticket)}
+                                        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                                    >
+                                        Print Ticket
+                                    </button>
+                                )
+                            }
                         </div>
                     );
                 })

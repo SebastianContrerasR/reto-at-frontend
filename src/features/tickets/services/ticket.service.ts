@@ -1,6 +1,6 @@
 import { API_URL } from "@/features/common/constants/constants";
-import { CreateTicket } from "@/types/create-ticket";
-import { Ticket } from "@/types/ticket";
+import { CreateTicket } from "@/features/tickets/types/create-ticket";
+import { Ticket } from "../types/ticket";
 
 const createHeaders = (token: string | null) => ({
     'Content-Type': 'application/json',
