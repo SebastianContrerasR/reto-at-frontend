@@ -1,25 +1,25 @@
-// components/TicketList.tsx
 import { generateTicketPdf } from '@/services/generateTicketPdf';
 import { getTickets } from '@/services/ticketService';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import Loading from './Loading';
 import { Ticket } from '@/types/ticket';
+import React, { useCallback, useEffect, useState } from 'react';
+import Loading from './Loading';
+import { useAuth } from '@/features/auth/context/AuthContext';
 
 const TicketList: React.FC = () => {
     const [tickets, setTickets] = useState<Ticket[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const { token } = useAuth();
 
-    const fetchTickets = async () => {
+    const fetchTickets = useCallback(async () => {
         try {
-            const data = await getTickets();
+            const data = await getTickets(token);
             setTickets(data);
         } catch (error) {
             console.error(error);
         } finally {
             setLoading(false);
         }
-    };
+    }, [token]);
 
     const handlePrintTicket = async (ticket: Ticket) => {
         try {
@@ -31,7 +31,7 @@ const TicketList: React.FC = () => {
 
     useEffect(() => {
         fetchTickets();
-    }, []);
+    }, [fetchTickets, token]);
 
     if (loading) {
         return <Loading />;
@@ -39,11 +39,6 @@ const TicketList: React.FC = () => {
 
     return (
         <div className="space-y-4 p-4">
-            <Link href="/">
-                <span className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 inline-block">
-                    Back to Flights List
-                </span>
-            </Link>
             <h1 className="text-2xl font-bold mb-4">Ticket List</h1>
             {tickets.length === 0 ? (
                 <p>No tickets found.</p>

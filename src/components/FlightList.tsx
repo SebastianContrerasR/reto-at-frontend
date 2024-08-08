@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getFlights } from '@/services/flightService';
+import { getFlights } from '@/services/flight.service';
 import Loading from './Loading';
 import Link from 'next/link';
 
