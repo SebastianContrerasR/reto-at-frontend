@@ -1,28 +1,4 @@
 # Reto frontend
-#### Arquitectura Basada en Características
-
-Para el proyecto se usa una arquitectura basada en caracteristicas. Esta estructura se refleja en el proyecto, donde cada característica (como autenticación, vuelos y tickets) tiene su propia carpeta que agrupa componentes, servicios, contextos y tipos relacionados.
-
-**Ventajas de la Arquitectura Basada en Características:**
-
-1. **Cohesión**
-2. **Escalabilidad**
-3. **Mantenimiento**
-
-**Relación con los Principios SOLID:**
-
-- **Single Responsibility Principle (SRP)**: Cada carpeta o módulo tiene una única responsabilidad y está diseñado para manejar una parte específica del proyecto, como autenticación o gestión de vuelos.
-- **Open/Closed Principle (OCP)**: La arquitectura permite extender funcionalidades sin modificar el código existente. Por ejemplo, puedes agregar nuevos componentes o servicios dentro de una característica sin afectar a otras.
-- **Interface Segregation Principle (ISP)**: Cada módulo tiene interfaces específicas que se ajustan a sus necesidades, evitando interfaces grandes y complejas.
-- **Dependency Inversion Principle (DIP)**: La arquitectura facilita la inyección de dependencias y el desacoplamiento entre componentes y servicios, promoviendo una mejor modularidad.
-
-#### Tecnologías Usadas
-
-- **Next.js**
-- **Tailwind CSS**
-- **TypeScript**
-- **jsPDF**
-- **Sonner**
 
 #### Ejecución del Proyecto
 
@@ -48,6 +24,32 @@ Para ejecutar el proyecto, sigue estos pasos:
    ```bash
    npm run start
    ```
+
+#### Arquitectura Basada en Características
+
+Para el proyecto se usa una arquitectura basada en caracteristicas. Esta estructura se refleja en el proyecto, donde cada característica (como autenticación, vuelos y tickets) tiene su propia carpeta que agrupa componentes, servicios, contextos y tipos relacionados.
+
+**Ventajas de la Arquitectura Basada en Características:**
+
+1. **Cohesión**
+2. **Escalabilidad**
+3. **Mantenimiento**
+
+**Relación con los Principios SOLID:**
+
+- **Single Responsibility Principle (SRP)**: Cada carpeta o módulo tiene una única responsabilidad y está diseñado para manejar una parte específica del proyecto, como autenticación o gestión de vuelos.
+- **Open/Closed Principle (OCP)**: La arquitectura permite extender funcionalidades sin modificar el código existente. Por ejemplo, puedes agregar nuevos componentes o servicios dentro de una característica sin afectar a otras.
+- **Interface Segregation Principle (ISP)**: Cada módulo tiene interfaces específicas que se ajustan a sus necesidades, evitando interfaces grandes y complejas.
+- **Dependency Inversion Principle (DIP)**: La arquitectura facilita la inyección de dependencias y el desacoplamiento entre componentes y servicios, promoviendo una mejor modularidad.
+
+#### Tecnologías Usadas
+
+- **Next.js**
+- **Tailwind CSS**
+- **TypeScript**
+- **jsPDF**
+- **Sonner**
+
 #### **Capturas**
 - Pagina principal (Lista de vuelos)
 
