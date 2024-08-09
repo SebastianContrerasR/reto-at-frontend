@@ -1,4 +1,30 @@
 # Reto frontend
+
+#### Ejecución del Proyecto
+
+Para ejecutar el proyecto, sigue estos pasos:
+
+1. **Instalar Dependencias**: Asegúrate de tener todas las dependencias instaladas ejecutando:
+   ```bash
+   npm install
+   ```
+2. **Agregar env**: Asegúrate de copiar las variables de entorno a `env.local` o `env.production`.
+3. **Ejecutar el Servidor de Desarrollo**: Inicia el servidor de desarrollo con:
+   ```bash
+   npm run dev
+   ```
+   Esto ejecutará Next.js en el puerto 4000 por defecto (`http://localhost:4000`).
+
+4. **Construir el Proyecto para Producción**: Si deseas construir el proyecto para producción, usa:
+   ```bash
+   npm run build
+   ```
+
+5. **Iniciar el Servidor de Producción**: Una vez construido, puedes iniciar el servidor de producción con:
+   ```bash
+   npm run start
+   ```
+
 #### Arquitectura Basada en Características
 
 Para el proyecto se usa una arquitectura basada en caracteristicas. Esta estructura se refleja en el proyecto, donde cada característica (como autenticación, vuelos y tickets) tiene su propia carpeta que agrupa componentes, servicios, contextos y tipos relacionados.
@@ -24,30 +50,6 @@ Para el proyecto se usa una arquitectura basada en caracteristicas. Esta estruct
 - **jsPDF**
 - **Sonner**
 
-#### Ejecución del Proyecto
-
-Para ejecutar el proyecto, sigue estos pasos:
-
-1. **Instalar Dependencias**: Asegúrate de tener todas las dependencias instaladas ejecutando:
-   ```bash
-   npm install
-   ```
-
-2. **Ejecutar el Servidor de Desarrollo**: Inicia el servidor de desarrollo con:
-   ```bash
-   npm run dev
-   ```
-   Esto ejecutará Next.js en el puerto 4000 por defecto (`http://localhost:4000`).
-
-3. **Construir el Proyecto para Producción**: Si deseas construir el proyecto para producción, usa:
-   ```bash
-   npm run build
-   ```
-
-4. **Iniciar el Servidor de Producción**: Una vez construido, puedes iniciar el servidor de producción con:
-   ```bash
-   npm run start
-   ```
 #### **Capturas**
 - Pagina principal (Lista de vuelos)
 
@@ -60,6 +62,10 @@ Para ejecutar el proyecto, sigue estos pasos:
 - Lista de tickets del usuario
   
 ![image](https://github.com/user-attachments/assets/fb3a6de5-0c8b-47ae-aedd-691b95962adb)
+
+- Ejemplo de ticket
+
+![image](https://github.com/user-attachments/assets/08ca44e9-0d97-40bd-8821-824351f418c7)
 
 - Registro
 
