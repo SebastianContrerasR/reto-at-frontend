@@ -44,8 +44,8 @@ const FlightList: React.FC = () => {
                 flights.map((flight) => (
                     <div key={flight.id} className="border p-4 rounded-md shadow-md">
                         <h2 className="text-xl font-semibold">{flight.departure} to {flight.arrival}</h2>
-                        <p><strong>Departure Date:</strong> {new Date(flight.departureDate).toLocaleDateString()}</p>
-                        <p><strong>Arrival Date:</strong> {new Date(flight.arrivalDate).toLocaleDateString()}</p>
+                        <p><strong>Departure Date:</strong> {new Date(flight.departureDate).toLocaleString()}</p>
+                        <p><strong>Arrival Date:</strong> {new Date(flight.arrivalDate).toLocaleString()}</p>
                         <Link href={`/flights/${flight.id}`}>
                             <span className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 inline-block">
                                 Reserve
