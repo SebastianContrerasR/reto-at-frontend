@@ -8,19 +8,19 @@ Para ejecutar el proyecto, sigue estos pasos:
    ```bash
    npm install
    ```
-
-2. **Ejecutar el Servidor de Desarrollo**: Inicia el servidor de desarrollo con:
+2. **Agregar env**: Asegúrate de copiar las variables de entorno a `env.local` o `env.production`.
+3. **Ejecutar el Servidor de Desarrollo**: Inicia el servidor de desarrollo con:
    ```bash
    npm run dev
    ```
    Esto ejecutará Next.js en el puerto 4000 por defecto (`http://localhost:4000`).
 
-3. **Construir el Proyecto para Producción**: Si deseas construir el proyecto para producción, usa:
+4. **Construir el Proyecto para Producción**: Si deseas construir el proyecto para producción, usa:
    ```bash
    npm run build
    ```
 
-4. **Iniciar el Servidor de Producción**: Una vez construido, puedes iniciar el servidor de producción con:
+5. **Iniciar el Servidor de Producción**: Una vez construido, puedes iniciar el servidor de producción con:
    ```bash
    npm run start
    ```
