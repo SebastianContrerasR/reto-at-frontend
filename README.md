@@ -70,4 +70,4 @@ Para ejecutar el proyecto, sigue estos pasos:
 ![image](https://github.com/user-attachments/assets/9cce4273-105e-4b10-9a68-9fc009ef8efd)
 
 #### **Importante**
-Se debe tener corriendo el backend para que funcione este proyecto. Link del backend: [Texto del Enlace](http://ejemplo.com)
+Se debe tener corriendo el backend para que funcione este proyecto. Link del backend: [Backend](https://github.com/SebastianContrerasR/reto-at-backend)
