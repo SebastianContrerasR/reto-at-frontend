@@ -63,6 +63,10 @@ Para el proyecto se usa una arquitectura basada en caracteristicas. Esta estruct
   
 ![image](https://github.com/user-attachments/assets/fb3a6de5-0c8b-47ae-aedd-691b95962adb)
 
+- Ejemplo de ticket
+
+![image](https://github.com/user-attachments/assets/08ca44e9-0d97-40bd-8821-824351f418c7)
+
 - Registro
 
 ![image](https://github.com/user-attachments/assets/5c356db5-3d04-4699-81fd-9600544bfff4)
