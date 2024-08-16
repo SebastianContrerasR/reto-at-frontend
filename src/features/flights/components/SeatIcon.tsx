@@ -9,7 +9,7 @@ interface SeatIconProps {
 }
 
 const SeatIcon: React.FC<SeatIconProps> = ({
-    width = "38",
+    width = "36",
     height = "45",
     className = ""
 }) => {
@@ -17,7 +17,7 @@ const SeatIcon: React.FC<SeatIconProps> = ({
         <svg
             width={width}
             height={height}
-            viewBox="0 0 38 45"
+            viewBox="0 0 39 45"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={className}

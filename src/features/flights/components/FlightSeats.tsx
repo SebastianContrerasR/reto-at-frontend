@@ -1,5 +1,9 @@
+import { chunkArray } from "@/features/common/utils";
 import { Seat } from "@/features/flights/types/flight-details";
-import SeatIcon from "./SeatIcon";
+import { SeatHeader } from "./SeatHeader";
+import { SeatMiddle } from "./SeatMiddle";
+import { SeatRow } from "./SeatRow";
+import { WingIcon } from "./WingIcon";
 
 interface FlightSeatsProps {
     seats: Seat[];
@@ -8,39 +12,34 @@ interface FlightSeatsProps {
     selectedSeats: Seat[];
 }
 
-const getSeatIconClasses = (seat: Seat, isSelected: boolean) => {
-    if (seat.status === 'free') {
-        return `stroke-blue-500 fill-white hover:fill-blue-400 hover:stroke-white ${isSelected ? 'fill-blue-500 stroke-white' : ''
-            }`;
-    }
-
-    if (seat.status === 'booked') {
-        return 'stroke-white fill-gray-400';
-    }
-
-    return '';
-};
-
 export const FlightSeats: React.FC<FlightSeatsProps> = ({ seats, onSeatSelect, selectedSeats, isLoading }) => {
+    const seatRows = chunkArray<Seat>(seats, 6);
 
     return (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
-            {seats.map((seat) => {
-                const isSelected = !!selectedSeats.find((s) => s.id === seat.id);
-
-                return (
-                    <div key={seat.id} className="flex justify-center items-center">
-                        <button
-                            onClick={() => !isLoading && seat.status === 'free' && onSeatSelect(seat)}
-                            disabled={seat.status === 'booked' || isLoading}
-                        >
-                            <SeatIcon
-                                className={`transition-colors duration-100 ${getSeatIconClasses(seat, isSelected)}`}
+        <div className="overflow-x-hidden">
+            <section className="relative flex flex-col mx-auto max-w-[400px] border rounded-full gap-4 px-4 py-32">
+                <SeatHeader />
+                {seatRows.map((rowSeats, index) => (
+                    <>
+                        {Math.floor(seatRows.length / 2) === index ? (
+                            <SeatMiddle />
+                        ) : (
+                            <SeatRow
+                                key={index}
+                                rowNumber={index + 1}
+                                seats={rowSeats}
+                                selectedSeats={selectedSeats}
+                                isLoading={isLoading}
+                                onSeatSelect={onSeatSelect}
                             />
-                        </button>
-                    </div>
-                );
-            })}
+                        )}
+                    </>
+                ))}
+                {/* Wing icon */}
+                <WingIcon className="absolute top-1/2 transform right-[100%] -translate-y-1/2" />
+                <WingIcon className="absolute top-1/2 transform left-[100%] -translate-y-1/2 -scale-x-100" />
+            </section>
         </div>
     );
+
 };

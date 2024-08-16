@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { FlightDetails, Seat } from '../types/flight-details';
+import { WingIcon } from './WingIcon';
 
 const FlightDetailsComponent = () => {
     const router = useRouter();
@@ -33,14 +34,13 @@ const FlightDetailsComponent = () => {
     };
 
     const fetchFlightById = async (id: string) => {
-
         if (id) {
             try {
                 const data = await getFlightDetails(id as string);
                 setFlight(data);
                 setNotFound(false);
             } catch (error: any) {
-                console.error(' ddddError fetching flight:', { error });
+                console.error('Error fetching flight:', { error });
                 setNotFound(true);
             }
         }
@@ -93,7 +93,7 @@ const FlightDetailsComponent = () => {
 
     return (
         <div className="flex flex-col gap-8">
-            <div className='mb-8'>
+            <div className="mb-8">
                 <Head>
                     <title>Flight Details</title>
                 </Head>
@@ -104,23 +104,23 @@ const FlightDetailsComponent = () => {
                     <p><strong>Departure Date:</strong> {new Date(flight.departureDate).toLocaleString()}</p>
                     <p><strong>Arrival Date:</strong> {new Date(flight.arrivalDate).toLocaleString()}</p>
                 </div>
-                <div className="bg-white p-4 shadow-md rounded-md">
-
+                <div className="bg-white p-4 my-8 shadow-md rounded-md">
                     <h1 className="text-2xl font-bold mb-4">{'Select seats'}</h1>
-                    <div className="overflow-x-auto">
-                        <div className="grid grid-cols-1 gap-4">
-                            <FlightSeats
-                                isLoading={isPayment}
-                                seats={flight.seats}
-                                onSeatSelect={handleSeatSelect}
-                                selectedSeats={selectedSeats}
-                            />
-                        </div>
-                    </div>
+
+                    <FlightSeats
+                        isLoading={isPayment}
+                        seats={flight.seats}
+                        onSeatSelect={handleSeatSelect}
+                        selectedSeats={selectedSeats}
+                    />
                 </div>
 
                 {selectedSeats.length > 0 && (
-                    <SelectedSeatsBar isLoading={isPayment} onSubmit={handlePayment} selectedSeats={selectedSeats} />
+                    <SelectedSeatsBar
+                        isLoading={isPayment}
+                        onSubmit={handlePayment}
+                        selectedSeats={selectedSeats}
+                    />
                 )}
             </div>
         </div>
