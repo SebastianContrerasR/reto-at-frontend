@@ -33,6 +33,11 @@ const FlightDetailsComponent = () => {
         });
     };
 
+    const handleRemoveSeat = (seatId: string) => {
+        if (isPayment) return;
+        setSelectedSeats((prevSelected) => prevSelected.filter((s) => s.id !== seatId));
+    };
+
     const fetchFlightById = async (id: string) => {
         if (id) {
             try {
@@ -104,9 +109,7 @@ const FlightDetailsComponent = () => {
                     <p><strong>Departure Date:</strong> {new Date(flight.departureDate).toLocaleString()}</p>
                     <p><strong>Arrival Date:</strong> {new Date(flight.arrivalDate).toLocaleString()}</p>
                 </div>
-                <div className="bg-white p-4 my-8 shadow-md rounded-md">
-                    <h1 className="text-2xl font-bold mb-4">{'Select seats'}</h1>
-
+                <div className="bg-gray-50 p-4 my-8 shadow-md rounded-md overflow-x-hidden">
                     <FlightSeats
                         isLoading={isPayment}
                         seats={flight.seats}
@@ -120,6 +123,7 @@ const FlightDetailsComponent = () => {
                         isLoading={isPayment}
                         onSubmit={handlePayment}
                         selectedSeats={selectedSeats}
+                        onRemoveSeat={handleRemoveSeat}
                     />
                 )}
             </div>
