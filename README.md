@@ -53,19 +53,23 @@ Para el proyecto se usa una arquitectura basada en caracteristicas. Esta estruct
 #### **Capturas**
 - Pagina principal (Lista de vuelos)
 
-![image](https://github.com/user-attachments/assets/bd37375c-e1c6-463c-8945-b9d527106756)
+![image](https://github.com/user-attachments/assets/34d698fc-4123-47dc-85a1-24f74f8e93ab)
 
-- Detalle de vuelo y seleccion de asientos para pagar
+- Detalle de vuelo
   
-![image](https://github.com/user-attachments/assets/8a0c1738-86c7-43b3-8915-21c031dceabe)
+![image](https://github.com/user-attachments/assets/fd9937a1-a9f2-4a80-b6bd-50b60ff79375)
+
+- Seleccion de asientos para pagar
+
+![image](https://github.com/user-attachments/assets/dde9fdc5-5514-4d5b-bb94-5f22a8acecbc)
 
 - Lista de tickets del usuario
   
-![image](https://github.com/user-attachments/assets/fb3a6de5-0c8b-47ae-aedd-691b95962adb)
+![image](https://github.com/user-attachments/assets/789c1e52-3b76-4701-a0a9-5d06fabdc832)
 
-- Ejemplo de ticket
+- Ejemplo de ticket para imprimir
 
-![image](https://github.com/user-attachments/assets/08ca44e9-0d97-40bd-8821-824351f418c7)
+![image](https://github.com/user-attachments/assets/ae2c9ae1-e2d5-45c5-9a5d-22a0a43e24c6)
 
 - Registro
 
