@@ -1,10 +1,14 @@
 # Reto frontend
 ## Video Demo
 
+Para abrir el video, click en la imagen.
+
 [![Demo del proyecto](https://img.youtube.com/vi/30_mVe9EnyQ/maxresdefault.jpg)](https://youtu.be/30_mVe9EnyQ)
 
-Para abrir el video, click. Enlace: [![Enlace del video](https://youtu.be/30_mVe9EnyQ)
-
+O copiar el enlace
+```
+https://youtu.be/30_mVe9EnyQ
+```
 
 #### Ejecución del Proyecto
 
