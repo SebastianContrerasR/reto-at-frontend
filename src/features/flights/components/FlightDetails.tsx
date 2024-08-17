@@ -104,7 +104,7 @@ const FlightDetailsComponent = () => {
                 <title>Flight Details</title>
             </Head>
 
-            <h1 className="text-4xl font-bold mb-6 text-start">Select your seats</h1>
+            <h1 className="text-4xl mb-6 text-start italic">Select your seats</h1>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                 <div className="flex-1 relative bg-blue-50 p-4 rounded-lg shadow-md overflow-hidden w-full">
                     <Image
