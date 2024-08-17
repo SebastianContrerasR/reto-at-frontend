@@ -32,7 +32,7 @@ const TicketList: React.FC = () => {
     }
 
     return (
-        <div className="space-y-8 bg-slate-100 p-4">
+        <div className="space-y-8  p-4">
             <h1 className="text-3xl font-bold mb-6 text-center">Your Tickets</h1>
             {tickets.length === 0 ? (
                 <p className="text-center text-gray-500">No tickets found.</p>
