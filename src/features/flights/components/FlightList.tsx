@@ -1,7 +1,6 @@
 import Loading from '@/features/common/components/Loading';
 import { calculateTimeDifference } from '@/features/common/utils';
 import { getFlights } from '@/features/flights/services/flight.service';
-import Head from 'next/head';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaPlane } from 'react-icons/fa';
@@ -39,9 +38,6 @@ const FlightList: React.FC = () => {
 
     return (
         <div className="space-y-4 p-4">
-            <Head>
-                <title>Flight List</title>
-            </Head>
             <h1 className="text-2xl font-bold mb-4">Flight List</h1>
             {flights.length === 0 ? (
                 <p>No flights found.</p>
@@ -78,7 +74,7 @@ const FlightList: React.FC = () => {
                             <p className="text-gray-500">Operated by Flight Booking Saga SAC</p>
                             <Link href={`/flights/${flight.id}`}>
                                 <span className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                                    Reserve
+                                    Select seats
                                 </span>
                             </Link>
                         </div>

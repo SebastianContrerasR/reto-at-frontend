@@ -1,9 +1,10 @@
 import RegisterForm from '@/features/auth/components/registerForm';
 import { useAuth } from '@/features/auth/context/AuthContext';
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-const LoginPage: NextPage = () => {
+const RegisterPage: NextPage = () => {
     const { user } = useAuth();
     const router = useRouter();
     if (user) {
@@ -12,6 +13,9 @@ const LoginPage: NextPage = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen">
+            <Head>
+                <title>Register</title>
+            </Head>
             <div className="w-full max-w-md">
                 <RegisterForm />
             </div>
@@ -19,4 +23,4 @@ const LoginPage: NextPage = () => {
     );
 };
 
-export default LoginPage;
+export default RegisterPage;

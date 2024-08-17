@@ -99,10 +99,7 @@ const FlightDetailsComponent = () => {
     }
 
     return (
-        <div className="flex flex-col">
-            <Head>
-                <title>Flight Details</title>
-            </Head>
+        <div className="flex flex-col p-4">
 
             <h1 className="text-4xl mb-6 text-start italic">Select your seats</h1>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4">

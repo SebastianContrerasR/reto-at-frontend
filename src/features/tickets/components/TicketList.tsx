@@ -1,14 +1,16 @@
-import { generateTicketPdf } from '@/features/tickets/services/generateTicketPdf';
-import { getTickets } from '@/features/tickets/services/ticket.service';
-import React, { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '@/features/auth/context/AuthContext';
 import Loading from '@/features/common/components/Loading';
-import { Ticket, TicketStatus } from '../types/ticket';
+import { getTickets } from '@/features/tickets/services/ticket.service';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import ReactToPrint from 'react-to-print';
+import { Ticket } from '../types/ticket';
+import TicketDetailsToPrint from './TicketDetails';
 
 const TicketList: React.FC = () => {
     const [tickets, setTickets] = useState<Ticket[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const { token } = useAuth();
+    const componentRef = useRef<HTMLDivElement>(null);
 
     const fetchTickets = useCallback(async () => {
         try {
@@ -21,14 +23,6 @@ const TicketList: React.FC = () => {
         }
     }, [token]);
 
-    const handlePrintTicket = (ticket: Ticket) => {
-        try {
-            generateTicketPdf(ticket);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
     useEffect(() => {
         fetchTickets();
     }, [fetchTickets, token]);
@@ -38,48 +32,28 @@ const TicketList: React.FC = () => {
     }
 
     return (
-        <div className="space-y-4 p-4">
-            <h1 className="text-2xl font-bold mb-4">Ticket List</h1>
+        <div className="space-y-8 bg-slate-100 p-4">
+            <h1 className="text-3xl font-bold mb-6 text-center">Your Tickets</h1>
             {tickets.length === 0 ? (
-                <p>No tickets found.</p>
+                <p className="text-center text-gray-500">No tickets found.</p>
             ) : (
-                tickets.map((ticket: Ticket) => {
-                    const totalPrice = ticket.ticketItems.reduce((total, item) => total + parseFloat(item.price), 0);
-
-                    return (
-                        <div key={ticket.id} className="border p-4 rounded-md shadow-md">
-                            <h2 className="text-xl font-semibold">Ticket ID: {ticket.id}</h2>
-                            <p><strong>Created At:</strong> {new Date(ticket.createdAt).toLocaleString()}</p>
-                            <p><strong>Status:</strong> {ticket.status}</p>
-                            <h3 className="text-lg font-semibold mt-2">Flight Details:</h3>
-                            <p><strong>Departure:</strong> {ticket.flight.departure}</p>
-                            <p><strong>Arrival:</strong> {ticket.flight.arrival}</p>
-                            <p><strong>Departure Date:</strong> {new Date(ticket.flight.departureDate).toLocaleString()}</p>
-                            <p><strong>Arrival Date:</strong> {new Date(ticket.flight.arrivalDate).toLocaleString()}</p>
-                            <h3 className="text-lg font-semibold mt-2">Seats:</h3>
-                            <ul className="list-disc ml-5">
-                                {ticket.ticketItems.map((item) => (
-                                    <li key={item.id}>
-                                        <p><strong>Seat Code:</strong> {item.seatCode}</p>
-                                        <p><strong>Price:</strong> ${item.price}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                            <p className="mt-2"><strong>Total Price:</strong> ${totalPrice.toFixed(2)}</p>
-                            {
-                                ticket.status === TicketStatus.CONFIRMED && (
-
-                                    <button
-                                        onClick={() => handlePrintTicket(ticket)}
-                                        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                                    >
+                tickets.map((ticket: Ticket) => (
+                    <div key={ticket.id} className="relative">
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-4 z-10">
+                            <ReactToPrint
+                                trigger={() => (
+                                    <button className="bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg hover:bg-blue-600 transition duration-300">
                                         Print Ticket
                                     </button>
-                                )
-                            }
+                                )}
+                                content={() => componentRef.current}
+                            />
                         </div>
-                    );
-                })
+                        <div ref={componentRef} className="mt-12">
+                            <TicketDetailsToPrint ticket={ticket} />
+                        </div>
+                    </div>
+                ))
             )}
         </div>
     );
