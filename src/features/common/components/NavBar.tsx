@@ -12,7 +12,7 @@ const Navbar = () => {
         <nav className="bg-blue-600 text-white flex items-center justify-between p-4 shadow-md">
             <div className="flex items-center">
                 <Link href="/">
-                    <span className="text-xl font-semibold">Flight Booking App</span>
+                    <span className="text-xl font-semibold">Flight Booking Saga App</span>
                 </Link>
             </div>
             <div className="flex items-center space-x-4">

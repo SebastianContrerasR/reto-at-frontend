@@ -21,17 +21,16 @@ export const FlightSeats: React.FC<FlightSeatsProps> = ({ seats, onSeatSelect, s
             <SeatHeader />
             {seatRows.map((rowSeats, index) => (
                 <Fragment key={`seat-row-${index}`}>
-                    {Math.floor(seatRows.length / 2) === index ? (
+                    {Math.floor(seatRows.length / 2) === index && (
                         <SeatMiddle />
-                    ) : (
-                        <SeatRow
-                            rowNumber={index + 1}
-                            seats={rowSeats}
-                            selectedSeats={selectedSeats}
-                            isLoading={isLoading}
-                            onSeatSelect={onSeatSelect}
-                        />
                     )}
+                    <SeatRow
+                        rowNumber={index + 1}
+                        seats={rowSeats}
+                        selectedSeats={selectedSeats}
+                        isLoading={isLoading}
+                        onSeatSelect={onSeatSelect}
+                    />
                 </Fragment>
             ))}
             {/* Wing icon */}

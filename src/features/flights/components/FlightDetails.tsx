@@ -1,5 +1,6 @@
 import { useAuth } from '@/features/auth/context/AuthContext';
 import Loading from '@/features/common/components/Loading';
+import { calculateTimeDifference } from '@/features/common/utils';
 import { FlightSeats } from '@/features/flights/components/FlightSeats';
 import { SelectedSeatsBar } from '@/features/flights/components/SelectedSeatsBar';
 import { getFlightDetails } from '@/features/flights/services/flight.service';
@@ -9,10 +10,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { FaArrowDown, FaArrowRight } from 'react-icons/fa';
+import { FaPlane } from 'react-icons/fa';
 import { toast } from 'sonner';
 import { FlightDetails, Seat } from '../types/flight-details';
-import { calculateTimeDifference } from '@/features/common/utils';
 
 const FlightDetailsComponent = () => {
     const router = useRouter();
@@ -124,7 +124,8 @@ const FlightDetailsComponent = () => {
                 </div>
 
                 <div className="flex flex-col items-center">
-                    <FaArrowDown className="text-blue-500 text-2xl md:-rotate-90" />
+                    <FaPlane size={24} className="text-blue-500" />
+
                     <p className="text-gray-600 mt-2">{` ${calculateTimeDifference(flight.departureDate, flight.arrivalDate)}`}</p>
                 </div>
 

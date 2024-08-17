@@ -1,7 +1,10 @@
 import Loading from '@/features/common/components/Loading';
+import { calculateTimeDifference } from '@/features/common/utils';
 import { getFlights } from '@/features/flights/services/flight.service';
+import Head from 'next/head';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { FaPlane } from 'react-icons/fa';
 
 interface Flight {
     id: string;
@@ -35,35 +38,57 @@ const FlightList: React.FC = () => {
     }
 
     return (
-        <div className="space-y-6 p-6">
-            <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Available Flights</h1>
+        <div className="space-y-4 p-4">
+            <Head>
+                <title>Flight List</title>
+            </Head>
+            <h1 className="text-2xl font-bold mb-4">Flight List</h1>
             {flights.length === 0 ? (
-                <p className="text-center text-gray-500">No flights found.</p>
+                <p>No flights found.</p>
             ) : (
                 flights.map((flight: Flight) => (
-                    <div key={flight.id} className="border border-gray-200 p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                        <h2 className="text-2xl font-semibold text-blue-600 mb-2 flex items-center justify-between">
-                            <span>{flight.departure} to {flight.arrival}</span>
-                            <span className="text-gray-500 text-sm">{new Date(flight.departureDate).toLocaleDateString()}</span>
-                        </h2>
-                        <div className="text-gray-700">
-                            <p className="mb-1">
-                                <strong>Departure Date:</strong> {new Date(flight.departureDate).toLocaleString()}
-                            </p>
-                            <p className="mb-1">
-                                <strong>Arrival Date:</strong> {new Date(flight.arrivalDate).toLocaleString()}
-                            </p>
+                    <div key={flight.id} className="border p-6 rounded-md shadow-md bg-white space-y-4">
+
+                        <div className="flex justify-between items-center space-x-4">
+
+
+                            <div className="text-center">
+                                <p className="text-lg font-bold">{new Date(flight.departureDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                                <p className="text-sm text-gray-500">{flight.departure.slice(0, 3).toUpperCase()}</p>
+                            </div>
+
+                            <div className="flex-1 flex justify-center items-center space-x-4">
+                                <div className="flex-1 hidden md:block border-t-2 border-dotted border-gray-300" />
+                                <div className="flex flex-col justify-center items-center space-y-2 text-center">
+                                    <FaPlane size={24} className="text-blue-500" />
+                                    <p className="text-sm text-gray-500 mt-1">
+                                        {calculateTimeDifference(flight.departureDate, flight.arrivalDate)}
+                                    </p>
+                                </div>
+                                <div className="flex-1 hidden md:block border-t-2 border-dotted border-gray-300" />
+                            </div>
+
+                            <div className="text-center">
+                                <p className="text-lg font-bold">{new Date(flight.arrivalDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                                <p className="text-sm text-gray-500">{flight.arrival.slice(0, 3).toUpperCase()}</p>
+                            </div>
                         </div>
-                        <Link href={`/flights/${flight.id}`}>
-                            <span className="mt-4 inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:from-purple-600 hover:to-blue-500 transition-colors duration-300">
-                                Reserve
-                            </span>
-                        </Link>
+
+                        <div className="flex justify-between items-center text-sm space-x-2">
+                            <p className="text-gray-500">Operated by Flight Booking Saga SAC</p>
+                            <Link href={`/flights/${flight.id}`}>
+                                <span className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                    Reserve
+                                </span>
+                            </Link>
+                        </div>
                     </div>
                 ))
             )}
         </div>
     );
+
+
 
 };
 

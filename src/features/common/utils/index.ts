@@ -13,9 +13,8 @@ export const calculateTimeDifference = (departure: string, arrival: string): str
     const arrivalDate: Date = new Date(arrival);
     const differenceMs: number = arrivalDate.getTime() - departureDate.getTime();
 
-    const seconds: number = Math.floor(differenceMs / 1000) % 60;
     const minutes: number = Math.floor(differenceMs / (1000 * 60)) % 60;
     const hours: number = Math.floor(differenceMs / (1000 * 60 * 60));
 
-    return `${hours}h ${minutes}m ${seconds}s`;
+    return `${hours}h ${minutes}m`;
 };
